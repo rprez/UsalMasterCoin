@@ -1,12 +1,12 @@
 # Proyecto de fin de Master.
 ## Programa de fidelización que utiliza tokens ERC20.
 
-Implementación del token **Puntos Recompensas Coin** utilizando el estandar [ERC-20](https://eips.ethereum.org/EIPS/eip-20), desarrollada en [Solidity](https://github.com/ethereum/solidity).
+Implementación del token **Puntos Recompensas Coin** utilizando el estandar [ERC-20](https://eips.ethereum.org/EIPS/eip-20), desarrollado en [Solidity](https://github.com/ethereum/solidity).
 
 ## Instalación
 
 1. Descargar el repositorio 
-   git clone ...
+   git clone https://github.com/rprez/UsalMasterCoin.git
 
 2. [Instalar Brownie](https://eth-brownie.readthedocs.io/en/stable/install.html), en el caso de que no este instalado.
 
