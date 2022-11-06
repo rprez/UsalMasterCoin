@@ -1,4 +1,8 @@
 {
+  "name": "Programa de fidelizacion puntos recompensas coin",
+  "description": "Programa de fidelización utilizando tokens ERC20  ",
+  "version": "1.0.0",
+  "author": "Rodrigo Perez Haretche",
   "dependencies": {
     "ganache": "^7.4.4",
     "ganache-cli": "^6.12.2"
