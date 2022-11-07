@@ -2,63 +2,48 @@
 pragma solidity ^0.8.4;
 import "./PuntosRecompensasCoin.sol";
 
-contract PuntosFidelizacion{
+contract PuntosFidelizacion is Ownable {
 
-    PuntosRecompensasCoin private puntos;
+    PuntosRecompensasCoin internal puntos;
 
     // Direccion del creador de los puntos
-    address public creador;
+    address public administrador;
 
     constructor () {
         puntos = new PuntosRecompensasCoin();
-        creador = msg.sender;
+        administrador = msg.sender;
     }
 
-    // Estructura de datos para almacenar a los clientes del programa
-    struct Cliente {
-        uint puntos_canjeados;
-        string[] id_productos_comprados;
-    }
-
-    // Mapping para el registro de clientes
-    mapping (address => Cliente) private clientes;
-
-	// Balance de puntos de PuntosRecompensasCoin.
-    function balanceDePuntos() public view returns (uint) {
+    // Balance de puntos de PuntosRecompensasCoin.
+    function balanceDePuntos() public virtual view returns (uint) {
         return puntos.balanceOf(address(this));
     }
 
-    // Modificador que verifica que seas el creador del programa
-    modifier soloCreador(address _direccion) {
-        require(_direccion == creador, "No tienes permisos para ejecutar esta funcion.");
-        _;
+    // Estructura de datos para almacenar a las tiendas del programa
+    struct Tienda {
+        string id_tienda;
+        uint saldo_puntos;
     }
 
-    // Funcion que agrega un nuevo cliente al mapping de clientes
-    function agregarCliente(address _direccion) public  {
-        clientes[_direccion] = Cliente(0,new string[](0));
+    // Mapping para el registro de tiendas al programa.
+    mapping (address => Tienda) internal tiendas;
+
+    function crearNuevaTienda(string memory _id_tienda, address _address_tienda) public onlyOwner {
+        tiendas[_address_tienda] = Tienda(_id_tienda,0);
     }
 
-    // Funcion que retorna un cliente del mapping de clientes
-    function obtenerCliente(address _direccion) public view returns (Cliente memory) {
-        return clientes[_direccion];
-    }
-
-    // Funcion que obtiene Puntos conseguidos en una tienda
-    function canjearPuntos(uint _numPuntos,string memory _id_producto) public {
+    function transferirPuntosTienda(uint _numPuntos, address address_tienda) public onlyOwner {
         // Obtenemos el numero de tokens disponibles
         uint Balance = balanceDePuntos();
-        require(_numPuntos <= Balance, "No quedan puntos disponibles para comprar");
-        // Se transfieren los puntos al cliente
-        puntos.transfer(msg.sender, _numPuntos);
+        require(_numPuntos <= Balance, "No quedan puntos disponibles para transferir");
+        // Se transfiere el saldo de puntos a la tienda.
+        puntos.transfer(address_tienda, _numPuntos);
         // Registro de tokens comprados
-        clientes[msg.sender].puntos_canjeados += _numPuntos;
-        clientes[msg.sender].id_productos_comprados.push(_id_producto);
+        tiendas[address_tienda].saldo_puntos += _numPuntos;
     }
 
-    // Consulta saldo de tokens de un cliente.
-    function obtenerPuntos() public view returns (uint){
-        return puntos.balanceOf(msg.sender);
+    // Saldo de puntos de una tienda.
+    function saldoPuntosTienda(address _direccion) public onlyOwner view returns (uint) {
+        return puntos.balanceOf(_direccion);
     }
-
 }
