@@ -6,6 +6,7 @@ contract ContratosTienda is PuntosFidelizacion {
 
    // Estructura de datos para almacenar a los clientes del programa
     struct Cliente {
+        string id_cliente;
         uint puntos_recompensas;
         string[] id_productos_comprados;
     }
@@ -26,12 +27,12 @@ contract ContratosTienda is PuntosFidelizacion {
     }
 
     // Funcion que agrega un nuevo cliente al mapping de clientes
-    function agregarCliente(address _direccion) public verificarTienda {
-        clientes[msg.sender][_direccion] = Cliente(0,new string[](0));
+    function agregarCliente(string memory _id_cliente, address _address_cliente) public  {
+        clientes[msg.sender][_address_cliente] = Cliente(_id_cliente,0,new string[](0));
     }
 
     // Funcion que retorna un cliente del mapping de clientes
-    function obtenerCliente(address _direccion) public verificarTienda view returns (Cliente memory) {
+    function obtenerCliente(address _direccion) public view returns (Cliente memory) {
         return clientes[msg.sender][_direccion];
     }
 
