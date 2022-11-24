@@ -13,3 +13,7 @@ def isolate(fn_isolation):
 @pytest.fixture(scope="module")
 def token(PuntosRecompensasCoin, accounts):
     return PuntosRecompensasCoin.deploy({'from': accounts[0]})
+
+@pytest.fixture(scope="module")
+def contratosTienda(ContratosTienda, accounts):
+    return ContratosTienda.deploy({'from': accounts[0]})
