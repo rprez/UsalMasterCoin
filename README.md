@@ -21,7 +21,7 @@ brownie console
 Siguiente, desplegar el token Puntos Recompensas Coin:
 
 ```python
->>> contrato = PuntosFidelizacion.deploy({'from': accounts[0]})
+>>> contrato = ContratosTienda.deploy({'from': accounts[0]})
 
 Transaction sent: 0x54d6708b308d5dc4a06d33380af03c57cd4e76184084bb18ab0a31a653b909b0
   Gas price: 0.0 gwei   Gas limit: 12000000   Nonce: 0
@@ -38,12 +38,13 @@ El contrato queda desplegado con un balance de `2*(10**6)` asignados a la direcc
 >>> contrato.balanceDePuntos()
 2000000000000000000000000
 
->>> contrato.agregarCliente(accounts[1])
-Transaction sent: 0x1572e759ad15309461dcb61e132be6e518fae63c12de1cce453183e628d376f1
+>>> contrato.crearNuevaTienda(1,accounts[2],{'from':accounts[0]})
+Transaction sent: 0x87e89b8e80a6d6290404eda8653d218df3451970b9d7dd442942683495b890f9
   Gas price: 0.0 gwei   Gas limit: 12000000   Nonce: 1
-  PuntosFidelizacion.agregarCliente confirmed   Block: 2   Gas used: 24599 (0.20%)
+  ContratosTienda.crearNuevaTienda confirmed   Block: 2   Gas used: 45615 (0.38%)
 
-<Transaction '0x1572e759ad15309461dcb61e132be6e518fae63c12de1cce453183e628d376f1'>
+<Transaction '0x87e89b8e80a6d6290404eda8653d218df3451970b9d7dd442942683495b890f9'>
+
 
 >>>>>> contrato.canjearPuntos(150,'id001', {'from':accounts[1]})
 Transaction sent: 0x1a7ea9a7ce6df442c175c53dd6176be053cd38da1bc259761d0ae460aa1e2d40

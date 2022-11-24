@@ -10,8 +10,8 @@ contract ContratosTienda is PuntosFidelizacion {
         string[] id_productos_comprados;
     }
 
-    // Balance de puntos de PuntosRecompensasCoin de la tienda.
-    function balanceDePuntos() public override view returns(uint) {
+    // Balance de puntos de PuntosRecompensasCoin de la tienda a la que llama el contrato.
+    function balanceTiendaPuntos() public view returns(uint) {
         return puntos.balanceOf(msg.sender);
     }
 
@@ -21,7 +21,7 @@ contract ContratosTienda is PuntosFidelizacion {
 
     // Modificador que verifica que la tienda exista en el programa
     modifier verificarTienda() {
-        require(tiendas[msg.sender].saldo_puntos >= 0, "No tienes permisos para ejecutar esta funcion.");
+        require(tiendas[msg.sender].puntos_comprados >= 0, "No tienes permisos para ejecutar esta funcion.");
         _;
     }
 

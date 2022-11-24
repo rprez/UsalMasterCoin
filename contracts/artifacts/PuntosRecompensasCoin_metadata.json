@@ -41,6 +41,25 @@
 					{
 						"indexed": true,
 						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
 						"name": "from",
 						"type": "address"
 					},
@@ -203,6 +222,26 @@
 			},
 			{
 				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "symbol",
 				"outputs": [
 					{
@@ -279,6 +318,19 @@
 				],
 				"stateMutability": "nonpayable",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -305,6 +357,12 @@
 				"name()": {
 					"details": "Returns the name of the token."
 				},
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+				},
 				"symbol()": {
 					"details": "Returns the symbol of the token, usually a shorter version of the name."
 				},
@@ -316,6 +374,9 @@
 				},
 				"transferFrom(address,address,uint256)": {
 					"details": "See {IERC20-transferFrom}. Emits an {Approval} event indicating the updated allowance. This is not required by the EIP. See the note at the beginning of {ERC20}. NOTE: Does not update the allowance if the current allowance is the maximum `uint256`. Requirements: - `from` and `to` cannot be the zero address. - `from` must have a balance of at least `amount`. - the caller must have allowance for ``from``'s tokens of at least `amount`."
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
 				}
 			},
 			"version": 1
@@ -328,7 +389,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"PycharmProjects/UsalMasterCoin/contracts/PuntosRecompensasCoin.sol": "PuntosRecompensasCoin"
+			"contracts/PuntosRecompensasCoin.sol": "PuntosRecompensasCoin"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -342,12 +403,20 @@
 		"remappings": []
 	},
 	"sources": {
-		"@openzeppelin/contracts/token/ERC20/ERC20.sol": {
-			"keccak256": "0x24b04b8aacaaf1a4a0719117b29c9c3647b1f479c5ac2a60f5ff1bb6d839c238",
+		"@openzeppelin/contracts/access/Ownable.sol": {
+			"keccak256": "0xa94b34880e3c1b0b931662cb1c09e5dfa6662f31cba80e07c5ee71cd135c9673",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://43e46da9d9f49741ecd876a269e71bc7494058d7a8e9478429998adb5bc3eaa0",
-				"dweb:/ipfs/QmUtp4cqzf22C5rJ76AabKADquGWcjsc33yjYXxXC4sDvy"
+				"bzz-raw://40fb1b5102468f783961d0af743f91b9980cf66b50d1d12009f6bb1869cea4d2",
+				"dweb:/ipfs/QmYqEbJML4jB1GHbzD4cUZDtJg5wVwNm3vDJq1GbyDus8y"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC20/ERC20.sol": {
+			"keccak256": "0x4ffc0547c02ad22925310c585c0f166f8759e2648a09e9b489100c42f15dd98d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://15f52f51413a9de1ff191e2f6367c62178e1df7806d7880fe857a98b0b66253d",
+				"dweb:/ipfs/QmaQG1fwfgUt5E9nu2cccFiV47B2V78MM1tCy1qB7n4MsH"
 			]
 		},
 		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
@@ -374,12 +443,12 @@
 				"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3"
 			]
 		},
-		"PycharmProjects/UsalMasterCoin/contracts/PuntosRecompensasCoin.sol": {
-			"keccak256": "0x9bb9c4954b94c2f894f1b04bc0afb7b70a272d6883b4b52ea352fd10fb351622",
+		"contracts/PuntosRecompensasCoin.sol": {
+			"keccak256": "0xf397b1ed558042395bb43ece7ba98da61f2a9cde2cc5c47d76538e9ca783f638",
 			"license": "UNLICENSED",
 			"urls": [
-				"bzz-raw://a621b32e8d95ce487fd59ace3563ddc821409a37629e595e7682fd69e4aca56b",
-				"dweb:/ipfs/QmZX6wdX7pbds7S5U1EAfFQ1TiwjgGxWUAgSjhWo39LSPG"
+				"bzz-raw://049595b35444c82ae88867a428ac932c23ad2dc83f40378f9c6e9d012d8ab2f5",
+				"dweb:/ipfs/QmZB7DGwBwE2QqyHEeR1k1UVNrcXPFzFqAYoyzk7yfqn5w"
 			]
 		}
 	},

@@ -2,6 +2,7 @@
 pragma solidity ^0.8.4;
 import "./PuntosRecompensasCoin.sol";
 
+//Contrato encargado de gestionar los puntos de fidelizacion para las diferentes tiendas
 contract PuntosFidelizacion is Ownable {
 
     PuntosRecompensasCoin internal puntos;
@@ -14,19 +15,25 @@ contract PuntosFidelizacion is Ownable {
         administrador = msg.sender;
     }
 
+    // Estructura de datos para almacenar a las tiendas del programa
+    struct Tienda {
+        string id_tienda;
+        uint puntos_comprados;
+    }
+
+    // Mapping para el registro de tiendas al programa.
+    mapping (address => Tienda) internal tiendas;
+
+
     // Balance de puntos de PuntosRecompensasCoin.
     function balanceDePuntos() public virtual view returns (uint) {
         return puntos.balanceOf(address(this));
     }
 
-    // Estructura de datos para almacenar a las tiendas del programa
-    struct Tienda {
-        string id_tienda;
-        uint saldo_puntos;
+    // Saldo de puntos de una tienda dada una direccion. 
+    function saldoPuntosTienda(address _direccion) public onlyOwner view returns (uint) {
+        return puntos.balanceOf(_direccion);
     }
-
-    // Mapping para el registro de tiendas al programa.
-    mapping (address => Tienda) internal tiendas;
 
     function crearNuevaTienda(string memory _id_tienda, address _address_tienda) public onlyOwner {
         tiendas[_address_tienda] = Tienda(_id_tienda,0);
@@ -39,11 +46,7 @@ contract PuntosFidelizacion is Ownable {
         // Se transfiere el saldo de puntos a la tienda.
         puntos.transfer(address_tienda, _numPuntos);
         // Registro de tokens comprados
-        tiendas[address_tienda].saldo_puntos += _numPuntos;
+        tiendas[address_tienda].puntos_comprados += _numPuntos;
     }
 
-    // Saldo de puntos de una tienda.
-    function saldoPuntosTienda(address _direccion) public onlyOwner view returns (uint) {
-        return puntos.balanceOf(_direccion);
-    }
 }
