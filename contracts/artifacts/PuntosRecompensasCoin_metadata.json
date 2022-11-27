@@ -82,6 +82,24 @@
 			{
 				"inputs": [
 					{
+						"internalType": "string",
+						"name": "_id_cliente",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "_address_cliente",
+						"type": "address"
+					}
+				],
+				"name": "agregarCliente",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "address",
 						"name": "owner",
 						"type": "address"
@@ -144,6 +162,37 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "balanceSupply",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_id_tienda",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "_address_tienda",
+						"type": "address"
+					}
+				],
+				"name": "crearNuevaTienda",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -215,6 +264,61 @@
 						"internalType": "string",
 						"name": "",
 						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_direccion",
+						"type": "address"
+					}
+				],
+				"name": "obtenerCliente",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "id_cliente",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "puntos_recompensas",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string[]",
+								"name": "id_productos_comprados",
+								"type": "string[]"
+							}
+						],
+						"internalType": "struct PuntosRecompensasCoin.Cliente",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_direccion",
+						"type": "address"
+					}
+				],
+				"name": "obtenerPuntos",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -331,6 +435,47 @@
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_numPuntos",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_id_producto",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "_direccion_cliente",
+						"type": "address"
+					}
+				],
+				"name": "transferirPuntosCliente",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_numPuntos",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "address_tienda",
+						"type": "address"
+					}
+				],
+				"name": "transferirPuntosTienda",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -389,7 +534,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/PuntosRecompensasCoin.sol": "PuntosRecompensasCoin"
+			"PuntosRecompensasCoin.sol": "PuntosRecompensasCoin"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -443,12 +588,12 @@
 				"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3"
 			]
 		},
-		"contracts/PuntosRecompensasCoin.sol": {
-			"keccak256": "0xf397b1ed558042395bb43ece7ba98da61f2a9cde2cc5c47d76538e9ca783f638",
+		"PuntosRecompensasCoin.sol": {
+			"keccak256": "0x1d7cd08c8461d910cdcd0cb921be87a0f988d4d41f47abcc84431f7908188aa2",
 			"license": "UNLICENSED",
 			"urls": [
-				"bzz-raw://049595b35444c82ae88867a428ac932c23ad2dc83f40378f9c6e9d012d8ab2f5",
-				"dweb:/ipfs/QmZB7DGwBwE2QqyHEeR1k1UVNrcXPFzFqAYoyzk7yfqn5w"
+				"bzz-raw://3d72e06af4227fd5bed73fd09260df23d01ac0d9693c21f7a787dfa4d4d69935",
+				"dweb:/ipfs/QmTYAMWWHadZr4AyvoR85R5VaAhFapSqDBafA3eNsMqLNY"
 			]
 		}
 	},

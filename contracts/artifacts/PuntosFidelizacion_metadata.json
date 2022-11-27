@@ -56,6 +56,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "balanceSupply",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "string",
@@ -91,25 +104,6 @@
 				"name": "renounceOwnership",
 				"outputs": [],
 				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_direccion",
-						"type": "address"
-					}
-				],
-				"name": "saldoPuntosTienda",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -167,7 +161,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/GestionPuntos.sol": "PuntosFidelizacion"
+			"GestionPuntos.sol": "PuntosFidelizacion"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -221,15 +215,15 @@
 				"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3"
 			]
 		},
-		"contracts/GestionPuntos.sol": {
-			"keccak256": "0x7aa8b83f3af0a9bd210f643cc4bc4b0214e543536977e15ba3df2a7eecbb1484",
+		"GestionPuntos.sol": {
+			"keccak256": "0xf69c45bf1b1919ecb30c1ad71a31d2ee5365f948fcbcfe87aa5629434858bf0e",
 			"license": "UNLICENSED",
 			"urls": [
-				"bzz-raw://ea057a20803cb627a6ec60c9b952f1efad8fa62fd2728040e72e4112cfae95a6",
-				"dweb:/ipfs/QmNWAXNqEwW5aybGyn7FhJWwFwz8ovAiP3SER1mRt6TWeA"
+				"bzz-raw://4f132b7ad0b5393f08a7ce6d3d80468093f6bde3c6ebd8d9d56259f4184f160a",
+				"dweb:/ipfs/QmaD2oGWWjNyrDLLqVC9vNvuHxjmvVPPoxDPuxn25ganUz"
 			]
 		},
-		"contracts/PuntosRecompensasCoin.sol": {
+		"PuntosRecompensasCoin.sol": {
 			"keccak256": "0xf397b1ed558042395bb43ece7ba98da61f2a9cde2cc5c47d76538e9ca783f638",
 			"license": "UNLICENSED",
 			"urls": [
